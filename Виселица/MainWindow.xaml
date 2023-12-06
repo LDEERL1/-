@@ -1,0 +1,327 @@
+﻿<Window x:Class="HangmanGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Виселица" Height="600" Width="800">
+    <Grid>
+        <Image Source="pack://application:,,,/Images/fon1.jpg" Stretch="Fill"/>
+        <!-- Строка 1: Панель с вводом имени, кнопкой начала игры и выбором категории -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="443">
+
+            <ComboBox x:Name="CategoryComboBox" SelectedIndex="0" Margin="10" FontSize="20" Width="215">
+                <ComboBoxItem Content="Программирование"/>
+                <ComboBoxItem Content="Животные"/>
+                <ComboBoxItem Content="Еда"/>
+                <ComboBoxItem Content="Литература"/>
+            </ComboBox>
+            <Button Content="Начнем" Click="StartGameButton_Click" Foreground="Black" Background="#FF800808" FontWeight="Bold" Height="50" FontSize="25"/>
+            <Button Content="Рестарт" Click="RestartButton_Click" Foreground="Black" Background="#FF800808" FontWeight="Bold" Height="50" FontSize="25" Margin="10"/>
+        </StackPanel>
+
+        <!-- Строка 2: Изображение виселицы и клавиатура -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Изображение виселицы -->
+            <Image x:Name="HangmanImage" Width="210" Height="210" Grid.Row="0" Margin="451,10,139,10"/>
+
+            <!-- Клавиатура -->
+            <StackPanel x:Name="GamePanel" Grid.Row="1" Margin="10">
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button Content="Й" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ц" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                    <Button Content="У" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="К" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Е" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Н" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Г" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ш" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Щ" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="З" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Х" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ъ" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </WrapPanel>
+
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button Content="Ф" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ы" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="В" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="А" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="П" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Р" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="О" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Л" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Д" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ж" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Э" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </WrapPanel>
+
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button Content="Я" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ч" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="С" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="М" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="И" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Т" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ь" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Б" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Ю" Click="LetterButton_Click" Width="40" Height="40" Margin="5">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FF760606" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Строка 3: Счет сверху -->
+        <TextBlock x:Name="ScoreTextBlock" Text="Счет: 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"/>
+
+        <!-- Строка 4: Таблица результатов -->
+        <DataGrid x:Name="datagrid" HorizontalAlignment="Right" VerticalAlignment="Top" Width="123" Height="207" Margin="0,10,10,0" AutoGenerateColumns="False" Background="#FF695B5B" BorderBrush="#FF051A2E">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="NAME" Binding="{Binding NAME}"/>
+                <DataGridTextColumn Header="RESULT" Binding="{Binding RESULT}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Строка 5: Обновление слова -->
+        <ItemsControl x:Name="WordDisplayItemsControl" Margin="10,80,429,439">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" FontSize="24" Margin="5"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Window>
+
